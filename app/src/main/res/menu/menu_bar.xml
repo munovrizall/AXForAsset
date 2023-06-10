@@ -3,9 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Terms"
-        app:showAsAction="never" />
-    <item
-        android:title="Conditions"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_info"
+        android:title="Terms and Conditions"
+        app:showAsAction="always" />
+
 </menu>

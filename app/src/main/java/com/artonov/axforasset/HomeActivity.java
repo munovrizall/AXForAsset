@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +43,6 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
-
     void setupToolbar() {
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("AXForAsset");
@@ -64,12 +64,12 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         TextView tvGreeting = findViewById(R.id.tvGreeting);
-        tvGreeting.setText("Halo, " + username);
+        tvGreeting.setText("Welcome, " + username);
     }
     void setupBottomNav() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setSelectedItemId(R.id.navStore);
-
+        bottomNavigationView.setItemActiveIndicatorColor(getResources().getColorStateList(R.color.white));
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.navStore) {

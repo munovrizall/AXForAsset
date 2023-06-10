@@ -81,6 +81,11 @@
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+            app:itemRippleColor="@color/white"
+            app:itemTextColor="@color/white"
+            app:itemIconTint="@color/selector_bottom_nav"
+            app:backgroundTint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

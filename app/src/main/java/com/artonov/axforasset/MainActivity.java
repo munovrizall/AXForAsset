@@ -1,9 +1,11 @@
 package com.artonov.axforasset;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        forceLightMode();
         SharedPreferences sharedPreferences = getSharedPreferences("loginStatus", MODE_PRIVATE);
         boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
 
@@ -36,11 +39,14 @@ public class MainActivity extends AppCompatActivity {
                     etUsername.setError("Username tidak boleh kosong");
                 }
 
+                if (etPassword.getText().length() < 8) {
+                    etPassword.setError("Password harus lebih dari 8 karakter");
+                }
                 if (etPassword.getText().toString().isEmpty()) {
                     etPassword.setError("Password tidak boleh kosong");
                 } else {
                     if (etUsername.getText().toString().equalsIgnoreCase("john") &&
-                            etPassword.getText().toString().equalsIgnoreCase("123456")) {
+                            etPassword.getText().toString().equalsIgnoreCase("johnkeren")) {
 
                         SharedPreferences sharedPreferences = getSharedPreferences("loginStatus", MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -58,4 +64,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void forceLightMode() {
+        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {// Dark mode is enabled
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO || nightModeFlags == Configuration.UI_MODE_NIGHT_UNDEFINED) {// Dark mode is not enabled
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
 }

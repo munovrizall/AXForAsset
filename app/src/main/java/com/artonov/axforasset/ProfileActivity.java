@@ -1,8 +1,10 @@
 package com.artonov.axforasset;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -39,6 +41,9 @@ public class ProfileActivity extends AppCompatActivity {
         String username = spUsername.getString("username", "");
         TextView tvUsername = findViewById(R.id.tvUsername);
         tvUsername.setText(username);
+
+        TextView tvEmail = findViewById(R.id.tvEmail);
+        tvEmail.setText(username + "@gmail.com");
     }
     void setupToolbar() {
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
@@ -60,13 +65,33 @@ public class ProfileActivity extends AppCompatActivity {
             } else if (itemId == R.id.navProfile) {
                 return true;
             } else if (itemId == R.id.navLogout) {
-                SharedPreferences sharedPreferences = getSharedPreferences("loginStatus", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("isLoggedIn", false);
-                editor.apply();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Konfirmasi Logout");
+                builder.setMessage("Apakah Anda yakin ingin logout?");
 
-                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
-                finish();
+                builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("loginStatus", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("isLoggedIn", false);
+                        editor.apply();
+
+                        startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
                 return true;
             }
             return false;

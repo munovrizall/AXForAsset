@@ -25,8 +25,7 @@ public class TermsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == android.R.id.home) {
-            // Tindakan yang ingin Anda jalankan saat tombol "back" diklik
-            onBackPressed(); // Contoh: Kembali ke aktivitas sebelumnya
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);

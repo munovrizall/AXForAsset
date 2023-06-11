@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +17,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.artonov.axforasset.adapter.GameAssetAdapter;
+import com.artonov.axforasset.model.GameAsset;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -22,9 +26,13 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private GameAssetAdapter gameAssetAdapter;
+    private List<GameAsset> gameAssetList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setupCarousel();
         setupUsername();
+        setupRecyclerView();
         setupToolbar();
         setupBottomNav();
     }
@@ -81,6 +90,42 @@ public class HomeActivity extends AppCompatActivity {
 
         TextView tvGreeting = findViewById(R.id.tvGreeting);
         tvGreeting.setText("Welcome, " + username);
+    }
+
+    void setupRecyclerView() {
+        recyclerView = findViewById(R.id.rvGame);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        gameAssetList = generateGameAssets(); // Metode untuk menghasilkan daftar game asset
+
+        gameAssetAdapter = new GameAssetAdapter(gameAssetList, this);
+        recyclerView.setAdapter(gameAssetAdapter);
+    }
+
+    private List<GameAsset> generateGameAssets() {
+        List<GameAsset> gameAssets = new ArrayList<>();
+        gameAssets.add(new GameAsset(
+                getString(R.string.game_1),
+                getString(R.string.desc_1),
+                R.drawable.game_1));
+        gameAssets.add(new GameAsset(
+                getString(R.string.game_2),
+                getString(R.string.desc_2),
+                R.drawable.game_2));
+        gameAssets.add(new GameAsset(
+                getString(R.string.game_3),
+                getString(R.string.desc_3),
+                R.drawable.game_3));
+        gameAssets.add(new GameAsset(
+                getString(R.string.game_4),
+                getString(R.string.desc_4),
+                R.drawable.game_4));
+        gameAssets.add(new GameAsset(
+                getString(R.string.game_5),
+                getString(R.string.desc_5),
+                R.drawable.game_5));
+
+        return gameAssets;
     }
 
     void setupBottomNav() {

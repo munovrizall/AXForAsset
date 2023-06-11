@@ -1,7 +1,34 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">AXForAsset</string>
-   <string name="terms">
+    <string name="terms">
        <b>Terms and Conditions</b>\n\nWelcome to AXForasset!\n\nThese terms and conditions outline the rules and regulations for the use of AXForasset\'s Website, located at .\n\nBy accessing this website we assume you accept these terms and conditions. Do not continue to use AXForasset if you do not agree to take all of the terms and conditions stated on this page.\n\nThe following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.
    </string>
+    <string name="game_1">RPG PLATFORMER GAME KIT</string>
+    <string name="desc_1">This is the RPG Platformer Game Kit.\nPlease pay attention! This kit is assembled from the ready-made kits already placed. We also added new graphics (interface elements, objects) and finalized the main character (added new animation). This game kit shows the use case for graphics from different kits.\nThis collection will allow you to create a 2D RPG platformer. The collection includes the main game parts: game interface, characters, locations, background and environmental items, abilities and weapons.</string>
+    <string name="game_2">BATTLE OF HEROES 2D GAME KIT</string>
+    <string name="desc_2">Here is a cartoon set – Battle of Heroes 2D Game Kit. This set of graphics will allow you to create a full-fledged 2D game. It can be a tactical RPG or strategy.\nTHE KIT INCLUDES:\n
+20 characters;\n
+Building;\n
+3 types of explosion;\n
+20 icons;\n
+Ammunition;\n
+9 backgrounds;\n
+Interface.\n
+</string>
+    <string name="game_3">MAGIC SPELLS PIXEL ART SPRITE PACK</string>
+    <string name="desc_3">Here is Magic Spells Pixel Art Sprite Pack, which is perfect for creating various 2D game projects. Even an experienced developer will find something new here. For example, this package contains many different magical effects: bamboo wall, book of summoning, ball lightning, tornado, freeze, spear, attack sphere, arrows, healing, icicle. In addition, here you can find 10 different magic effect icons (32×32). All animations that are in this set are stored as sprite sheets (576×72).
+\nUse this set to create your own cool world of magic and wizardry, in which various magicians and witches will fight. Also, due to the fact that raster graphics are used here, you can easily edit the entire set. To do this, you can use any graphic editor, such as Adobe Photoshop.</string>
+    <string name="game_4">CARTOON 2D RPG GAME UI</string>
+    <string name="desc_4">We publish Cartoon 2D RPG Game UI. A set of graphical user interface for 2D role-playing games. It includes: windows, buttons, objects. All graphics are 100% vector. You can make any size without losing quality, change the color or delete an element that is not needed. All this can be done in the vector editor Adobe Illustrator.</string>
+    <string name="game_5">SKY 2D GAME BACKGROUNDS</string>
+    <string name="desc_5">Before you Sky 2D Game Backgrounds. This is a set of 4 high quality backgrounds. Each one is seamless. Also, the layers are separated so that you can create a parallax effect. You can use them in various 2D games where you need a background. All graphics are vector. This will allow you to easily edit graphics to fit your needs. For example, resize, delete objects, change color and more. The archive contains the following formats: AI, EPS, PNG (1920×1080).
+
+</string>
+
+    <string-array name="card_types">
+        <item>Visa</item>
+        <item>Master Card</item>
+        <item>Credit Card</item>
+    </string-array>
 
 </resources>

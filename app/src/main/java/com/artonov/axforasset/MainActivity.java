@@ -3,6 +3,7 @@ package com.artonov.axforasset;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -19,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         forceLightMode();
-        SharedPreferences sharedPreferences = getSharedPreferences("loginStatus", MODE_PRIVATE);
-        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+        SharedPreferences spLogin = getSharedPreferences("loginStatus", MODE_PRIVATE);
+        boolean isLoggedIn = spLogin.getBoolean("isLoggedIn", false);
 
         if (isLoggedIn) {
             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
@@ -39,27 +40,25 @@ public class MainActivity extends AppCompatActivity {
                     etUsername.setError("Username tidak boleh kosong");
                 }
 
-                if (etPassword.getText().length() < 8) {
-                    etPassword.setError("Password harus lebih dari 8 karakter");
-                }
+
                 if (etPassword.getText().toString().isEmpty()) {
                     etPassword.setError("Password tidak boleh kosong");
+                } else if (etPassword.getText().length() < 8) {
+                    etPassword.setError("Password harus lebih dari 8 karakter");
                 } else {
-                    if (etUsername.getText().toString().equalsIgnoreCase("john") &&
-                            etPassword.getText().toString().equalsIgnoreCase("johnkeren")) {
+                    SharedPreferences spLogin = getSharedPreferences("loginStatus", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = spLogin.edit();
+                    editor.putBoolean("isLoggedIn", true);
+                    editor.apply();
 
-                        SharedPreferences sharedPreferences = getSharedPreferences("loginStatus", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putBoolean("isLoggedIn", true);
-                        editor.apply();
+                    SharedPreferences spUsername = getSharedPreferences("username", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor seUsername = spUsername.edit();
+                    String username = etUsername.getText().toString();
+                    seUsername.putString("username", username);
+                    seUsername.apply();
 
-                        String username = etUsername.getText().toString();
-                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                        intent.putExtra("username", username);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(MainActivity.this, "Username atau Password salah", Toast.LENGTH_SHORT).show();
-                    }
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intent);
                 }
             }
         });

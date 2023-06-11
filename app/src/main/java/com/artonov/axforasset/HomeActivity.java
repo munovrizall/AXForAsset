@@ -49,6 +49,19 @@ public class HomeActivity extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("AXForAsset");
         toolbar.setBackgroundColor(getResources().getColor(R.color.black));
+        toolbar.setOnMenuItemClickListener(new MaterialToolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.barTerms) {
+                    Intent intent = new Intent(HomeActivity.this, TermsActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     void setupCarousel() {

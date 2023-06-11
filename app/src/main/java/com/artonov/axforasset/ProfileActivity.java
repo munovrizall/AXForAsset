@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -22,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Profile");
         setupToolbar();
 
         CardView cardView = findViewById(R.id.cardView);
@@ -49,6 +51,19 @@ public class ProfileActivity extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Profile");
         toolbar.setBackgroundColor(getResources().getColor(R.color.black));
+
+        toolbar.setOnMenuItemClickListener(new MaterialToolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.barTerms) {
+                    Intent intent = new Intent(ProfileActivity.this, TermsActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     void setupBottomNav() {
